@@ -20,6 +20,9 @@ export default function Header() {
         <a href="/blog" className="hover:font-bold hover:underline">
           Blog
         </a>
+        <a href="/contributors" className="hover:font-bold hover:underline">
+          Cpontributors
+        </a>
       </div>
     </header>
   );
