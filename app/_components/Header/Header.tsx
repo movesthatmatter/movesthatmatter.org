@@ -3,9 +3,9 @@ import { Link } from './components/Link';
 
 export default function Header() {
   return (
-    <header className="flex pb-4 text-black">
+    <header className="flex flex-col sm:flex-row pb-4 text-black">
       <Logo />
-      <nav className="flex flex-1 items-center align-center sbg-red-100 pl-4 items-end justify-end gap-4">
+      <nav className="flex flex-1 flex-col sm:flex-row sm:align-center pl-4 sm:items-end sm:justify-end gap-4">
         <Link href="/manifesto">Manifesto</Link>
         <Link href="/inspiration" className="hover:font-bold hover:underline">
           Inspiration
