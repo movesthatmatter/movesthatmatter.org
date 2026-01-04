@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: 'Moves That Matter',
   description:
-    'Moves That Matter | Collaborate & Co-Create solutions to mitigate the collapse of the current system',
+    'Making Moves That Matter | Collaborate & Co-Create solutions to mitigate the collapse of the current system',
 };
 
 export default function RootLayout({
