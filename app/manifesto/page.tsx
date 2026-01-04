@@ -10,7 +10,7 @@ export default function Manifesto() {
         <div
           className="prose prose-lg sdark:prose-invert
             prose-h1:font-bold prose-h1:text-xl
-            prose-a:text-blue-600 prose-p:text-justify prose-img:rounded-xl
+            prose-a:text-blue-600 prose-p:text-justify prose-li:text-justify prose-img:rounded-xl
             sprose-headings:underline"
         >
           <Content />
