@@ -11,8 +11,8 @@ export default function Layout({
       <main className="mx-auto min-h-screen w-full py-8 text-black">
         <div
           className="prose prose-lg sdark:prose-invert
-              prose-h1:font-bold prose-h1:text-xl
-              prose-a:text-blue-600 prose-p:text-justify prose-img:rounded-xl
+              prose-h1:font-bold prose-h1:text-3xl
+              sprose-a:text-blue-600 prose-p:text-justify prose-img:rounded-xl
               sprose-headings:underline"
         >
           {children}

@@ -1,21 +1,10 @@
-import Image from 'next/image';
-import Header from '../_components/Header/Header';
-import Content from './content.mdx';
+import { ContributorsList } from './_components/ContributorsList';
 
-export default function Manifesto() {
-  return (
-    <div className="flex flex-col min-h-screen bg-zinc-50 font-mono p-6">
-      <Header />
-      <main className="mx-auto min-h-screen w-full py-8 text-black">
-        <div
-          className="prose prose-lg sdark:prose-invert
-            prose-h1:font-bold prose-h1:text-xl
-            prose-a:text-blue-600 prose-p:text-justify prose-img:rounded-xl
-            sprose-headings:underline"
-        >
-          <Content />
-        </div>
-      </main>
-    </div>
-  );
+export const metadata = {
+  title: '[Moves That Matter].org Contributors',
+  description: '[Moves That Matter].org Contributors.',
+};
+
+export default function Page() {
+  return <ContributorsList />;
 }
