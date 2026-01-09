@@ -1,10 +1,27 @@
-import { BlogPosts } from './_components/BlogPosts';
+import { ArticleList } from '../_components/ArticleList';
+import { getBlogPosts } from './_util';
 
 export const metadata = {
-  title: '[Moves That Matter].org Blog',
-  description: '[Moves That Matter].org Blog.',
+  title: ' Blog | Moves That Matter',
+  description: 'Moves That Matter Blog.',
 };
 
 export default function Page() {
-  return <BlogPosts />;
+  const allPosts = getBlogPosts().sort(
+    (a, b) =>
+      new Date(b.metadata.publishedAt).getTime() -
+      new Date(a.metadata.publishedAt).getTime()
+  );
+
+  return (
+    <ArticleList
+      articles={allPosts.map((post) => ({
+        slug: post.slug,
+        title: post.metadata.title,
+        displayDate: post.metadata.publishedAt,
+      }))}
+      basePath="/blog"
+      displayListTitle="Blog"
+    />
+  );
 }

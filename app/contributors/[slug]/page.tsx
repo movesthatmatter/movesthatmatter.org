@@ -11,46 +11,6 @@ export async function generateStaticParams() {
   }));
 }
 
-// export function generateMetadata({ params }: any) {
-//   let post = getBlogPosts().find((post) => post.slug === params.slug);
-//   if (!post) {
-//     return;
-//   }
-
-//   let {
-//     title,
-//     publishedAt: publishedTime,
-//     summary: description,
-//     image,
-//   } = post.metadata;
-//   let ogImage = image
-//     ? image
-//     : `${baseUrl}/og?title=${encodeURIComponent(title)}`;
-
-//   return {
-//     title,
-//     description,
-//     openGraph: {
-//       title,
-//       description,
-//       type: 'article',
-//       publishedTime,
-//       url: `${baseUrl}/blog/${post.slug}`,
-//       images: [
-//         {
-//           url: ogImage,
-//         },
-//       ],
-//     },
-//     twitter: {
-//       card: 'summary_large_image',
-//       title,
-//       description,
-//       images: [ogImage],
-//     },
-//   };
-// }
-
 export default async function User({ params }: any) {
   const { slug } = await params;
 
@@ -62,28 +22,7 @@ export default async function User({ params }: any) {
 
   return (
     <section>
-      <script
-        type="application/ld+json"
-        suppressHydrationWarning
-        // dangerouslySetInnerHTML={{
-        //   __html: JSON.stringify({
-        //     '@context': 'https://schema.org',
-        //     '@type': 'BlogPosting',
-        //     headline: user.metadata.,
-        //     datePublished: user.metadata.publishedAt,
-        //     dateModified: user.metadata.publishedAt,
-        //     description: user.metadata.summary,
-        //     image: user.metadata.image
-        //       ? `${baseUrl}${user.metadata.image}`
-        //       : `/og?title=${encodeURIComponent(user.metadata.title)}`,
-        //     url: `${baseUrl}/blog/${user.slug}`,
-        //     author: {
-        //       '@type': 'Person',
-        //       name: 'My Portfolio',
-        //     },
-        //   }),
-        // }}
-      />
+      <script type="application/ld+json" suppressHydrationWarning />
 
       <h1 className="prose stitle font-semibold text-2xl tracking-tighter">
         <Link

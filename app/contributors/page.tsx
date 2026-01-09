@@ -1,10 +1,22 @@
-import { ContributorsList } from './_components/ContributorsList';
+import { ArticleList } from '../_components/ArticleList';
+import { getContributors } from './_util';
 
 export const metadata = {
-  title: '[Moves That Matter].org Contributors',
-  description: '[Moves That Matter].org Contributors.',
+  title: ' Contributors | Moves That Matter',
+  description: 'Moves That Matter Contributors.',
 };
 
 export default function Page() {
-  return <ContributorsList />;
+  const allContributors = getContributors();
+
+  return (
+    <ArticleList
+      articles={allContributors.map((c) => ({
+        slug: c.slug,
+        title: c.metadata.name,
+      }))}
+      basePath="/contributors"
+      displayListTitle="Contributors"
+    />
+  );
 }

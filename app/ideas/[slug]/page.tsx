@@ -1,29 +1,29 @@
 import { notFound } from 'next/navigation';
-import { getBlogPosts } from '../_util';
 import { CustomMDX } from '@/app/_components/mdx';
 import Link from 'next/link';
-import { getContributors } from '@/app/contributors/_util';
+import { getIdeas } from '../_util';
 import { formatDate } from '@/app/_util';
+import { getContributors } from '@/app/contributors/_util';
 
 export async function generateStaticParams() {
-  let posts = getBlogPosts();
+  const ideas = getIdeas();
 
-  return posts.map((post) => ({
-    slug: post.slug,
+  return ideas.map((item) => ({
+    slug: item.slug,
   }));
 }
 
-export default async function Blog({ params }: any) {
+export default async function Idea({ params }: any) {
   const { slug } = await params;
 
-  const post = getBlogPosts().find((post) => post.slug === slug);
+  const idea = getIdeas().find((item) => item.slug === slug);
 
-  if (post === undefined) {
+  if (idea === undefined) {
     return notFound();
   }
 
   const author = getContributors().find(
-    (user) => user.slug === post.metadata.author
+    (user) => user.slug === idea.metadata.author
   );
 
   return (
@@ -33,33 +33,40 @@ export default async function Blog({ params }: any) {
           href="./"
           className="stext-xl text-neutral-500 no-underline hover:underline "
         >
-          Blog/{' '}
+          Ideas/{' '}
         </Link>
-        {post.metadata.title}
+        {idea.metadata.name}
       </h1>
       <div className="flex flex-col sjustify-between sitems-center mt-2 mb-8 text-sm">
+        {idea.metadata.publishedAt && (
+          <span className="text-sm text-neutral-600 sdark:text-neutral-400">
+            Published: {formatDate(idea.metadata.publishedAt)}
+          </span>
+        )}
         {author && (
           <span className="text-sm text-neutral-600 sdark:text-neutral-400">
             By:{' '}
             <a href={`/contributors/${author.slug}`}>{author.metadata.name}</a>
           </span>
         )}
-
-        <span className="text-sm text-neutral-600 sdark:text-neutral-400">
-          Published: {formatDate(post.metadata.publishedAt)}
-        </span>
-        {post.metadata.writtenAt && (
+        {idea.metadata.status && (
           <span className="text-sm text-neutral-600 sdark:text-neutral-400">
-            Written At: {formatDate(post.metadata.writtenAt)}
+            Status: <span className='capitalize'>{idea.metadata.status}</span>
+          </span>
+        )}
+        {idea.metadata.url && (
+          <span className="text-sm text-neutral-600 sdark:text-neutral-400">
+            Url:{' '}
+            <a href={idea.metadata.url} target="_blank">
+              {idea.metadata.url}
+            </a>
           </span>
         )}
       </div>
       {/* <hr /> */}
       <article className="prose prose-lg prose-a:text-blue-600">
-        <CustomMDX source={post.content} />
+        <CustomMDX source={idea.content} />
       </article>
     </section>
   );
-
-  // return <>asda</>;
 }
