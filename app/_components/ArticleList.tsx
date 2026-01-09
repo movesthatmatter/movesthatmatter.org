@@ -26,11 +26,13 @@ export function ArticleList({ displayListTitle, articles, basePath }: Props) {
           >
             <div className="sflex sflex-col leading-none">
               {article.displayDate && (
-                <span className="text-sm text-neutral-500">
-                  {formatDate(article.displayDate, false)}
-                </span>
+                <>
+                  <span className="text-sm text-neutral-500">
+                    {formatDate(article.displayDate, false)}
+                  </span>
+                  &nbsp;
+                </>
               )}
-              &nbsp;
               <span className="">{article.title}</span>
             </div>
           </Link>
