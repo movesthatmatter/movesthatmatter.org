@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
+import { config } from './_config';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -13,9 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Moves That Matter',
-  description:
-    'Making Moves That Matter | Collaborate & Co-Create solutions to mitigate the collapse of the current system',
+  title: config.metadata.site.title,
+  description: config.metadata.site.description,
 };
 
 export default function RootLayout({
